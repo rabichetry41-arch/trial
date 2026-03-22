@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanghamitra • Pure Dairy from Women Farmers of Assam</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Scripts & Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: 'rgba(0, 173, 239, 1)',
+                            dark: 'rgba(0, 140, 200, 1)',
+                            light: 'rgba(0, 173, 239, 0.08)',
+                            surface: 'rgba(0, 173, 239, 0.04)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 173, 239, 0.1); }
+        .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7)); }
+        .product-card:hover { transform: translateY(-8px); }
+        .cart-drawer { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 173, 239, 0.4); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 173, 239, 1); }
+    </style>
+</head>
+<body class="bg-[#f8fcff] text-slate-900 overflow-x-hidden font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-[60] top-0 transition-all duration-300 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="https://iili.io/qWrHImF.md.jpg" alt="Logo" class="h-12 w-auto object-contain hover:scale-105 transition-transform">
+                <span class="hidden lg:block font-serif text-xl font-bold text-brand">Sanghamitra</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10 text-sm font-semibold uppercase tracking-wider">
+                <a href="#about" class="hover:text-brand transition-colors">About</a>
+                <a href="#products" class="hover:text-brand transition-colors">Shop</a>
+                <a href="#gallery" class="hover:text-brand transition-colors">Gallery</a>
+                <a href="#contact" class="hover:text-brand transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" class="relative p-2.5 bg-brand-light text-brand rounded-full hover:bg-brand hover:text-white transition-all">
+                    <i data-lucide="shopping-basket" class="w-6 h-6"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-brand-dark text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">0</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-700">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-[70] bg-white translate-x-full transition-transform duration-500 md:hidden">
+        <div class="p-6 flex justify-between items-center border-b">
+            <span class="font-serif text-2xl font-bold text-brand">Menu</span>
+            <button onclick="toggleMobileMenu()"><i data-lucide="x" class="w-8 h-8"></i></button>
+        </div>
+        <div class="flex flex-col p-8 gap-8 text-2xl font-bold">
+            <a href="#about" onclick="toggleMobileMenu()">About Us</a>
+            <a href="#products" onclick="toggleMobileMenu()">Shop Products</a>
+            <a href="#gallery" onclick="toggleMobileMenu()">Gallery</a>
+            <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://i.ibb.co/SDLx8dwz/group.jpg" class="w-full h-full object-cover scale-105 animate-slow-zoom" alt="Hero">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center text-white" data-aos="fade-up">
+            <span class="inline-block px-5 py-2 rounded-full bg-brand/20 backdrop-blur-md border border-brand/30 text-xs font-bold tracking-[0.3em] uppercase mb-8">
+                Assam • Women Powered • Pure Dairy
+            </span>
+            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl mb-6 drop-shadow-2xl">Sanghamitra</h1>
+            <p class="text-xl md:text-2xl font-light text-brand-light mb-10 max-w-2xl mx-auto leading-relaxed">
+                Empowering 1,700+ women to bring 100% natural, farm-fresh dairy from our village to your table.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#products" class="px-10 py-5 bg-brand hover:bg-brand-dark text-white rounded-2xl font-bold text-lg shadow-xl shadow-brand/20 transition-all transform hover:-translate-y-1">
+                    Shop Fresh Milk
+                </a>
+                <a href="#about" class="px-10 py-5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 rounded-2xl font-bold text-lg transition-all">
+                    Our Story
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-brand font-bold tracking-widest uppercase text-sm mb-4">The Impact</h2>
+                    <h3 class="font-serif text-4xl md:text-5xl text-slate-900 mb-8 leading-tight">From Women SHGs to a Proud Enterprise</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        Sanghamitra Mahila Producer Company Ltd. is a revolution in Chirang, Assam. We started with a vision to provide market access to rural women dairy farmers, ensuring they get fair prices and you get the purest milk.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 rounded-3xl bg-brand-surface border border-brand/10">
+                            <span class="block text-4xl font-bold text-brand mb-2">1,794+</span>
+                            <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Women Shareholders</span>
+                        </div>
+                        <div class="p-6 rounded-3xl bg-brand-surface border border-brand/10">
+                            <span class="block text-4xl font-bold text-brand mb-2">400L+</span>
+                            <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Daily Fresh Milk</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -top-6 -right-6 w-64 h-64 bg-brand-light rounded-full blur-3xl opacity-50"></div>
+                    <img src="https://iili.io/qWrOZjs.md.jpg" class="relative z-10 rounded-[2.5rem] shadow-2xl w-full aspect-[4/5] object-cover" alt="Women Farmers">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 bg-brand-surface">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4">Our Pure Offerings</h2>
+                <div class="w-20 h-1.5 bg-brand mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-500">100% natural • No preservatives • Delivered fresh in Bijni & nearby</p>
+            </div>
+
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Products Injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-serif text-3xl mb-12 flex items-center gap-4">
+                <span class="text-brand">#</span> Life at Sanghamitra
+            </h2>
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div class="overflow-hidden rounded-3xl shadow-lg group" data-aos="zoom-in">
+                    <img src="https://iili.io/qWrOZjs.md.jpg" class="w-full group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-3xl shadow-lg group" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://i.ibb.co/SDLx8dwz/group.jpg" class="w-full group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <!-- Add more items as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="py-24 bg-slate-900 text-white rounded-t-[3rem]">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20">
+            <div>
+                <h2 class="font-serif text-4xl mb-8">Ready to order fresh?</h2>
+                <p class="text-slate-400 mb-12 text-lg leading-relaxed">Join our dairy revolution. Whether you want a daily subscription or a bulk order, we are here to serve you.</p>
+                
+                <div class="space-y-8">
+                    <div class="flex gap-6 items-center">
+                        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center text-brand">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <p class="text-slate-300">Bijni, Chirang, Assam, 783390</p>
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center text-brand">
+                            <i data-lucide="phone-call"></i>
+                        </div>
+                        <p class="text-slate-300">+91 98765 43210</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="bg-white/5 p-10 rounded-[2.5rem] border border-white/10 backdrop-blur-sm" data-aos="fade-left">
+                <div class="grid grid-cols-2 gap-6 mb-6">
+                    <input type="text" placeholder="Your Name" class="bg-white/10 border border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand text-white placeholder:text-slate-500">
+                    <input type="email" placeholder="Email Address" class="bg-white/10 border border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand text-white placeholder:text-slate-500">
+                </div>
+                <textarea rows="4" placeholder="Your Message" class="w-full bg-white/10 border border-white/10 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand text-white placeholder:text-slate-500 mb-6"></textarea>
+                <button class="w-full py-4 bg-brand hover:bg-brand-dark rounded-xl font-bold text-lg transition-all">Send Message</button>
+            </form>
+        </div>
+
+        <footer class="max-w-7xl mx-auto px-6 mt-24 pt-12 border-t border-white/10 flex flex-col md:row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <img src="https://iili.io/qWrHImF.md.jpg" class="h-10 grayscale brightness-200">
+                <p class="text-slate-500 text-sm">© 2026 Sanghamitra Mahila Producer Company Ltd.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-500 hover:text-brand"><i data-lucide="facebook"></i></a>
+                <a href="#" class="text-slate-500 hover:text-brand"><i data-lucide="instagram"></i></a>
+            </div>
+        </footer>
+    </section>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-[100] invisible">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleCart()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl cart-drawer translate-x-full flex flex-col">
+            <div class="p-8 border-b flex justify-between items-center bg-brand-surface">
+                <h3 class="font-serif text-2xl font-bold text-slate-900">Your Basket</h3>
+                <button onclick="toggleCart()" class="p-2 hover:bg-white rounded-full transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <div id="cart-items" class="flex-1 overflow-y-auto p-8 space-y-6">
+                <!-- Cart items injected here -->
+            </div>
+
+            <div class="p-8 border-t bg-slate-50">
+                <div class="flex justify-between text-xl font-bold mb-8">
+                    <span>Subtotal</span>
+                    <span id="cart-total" class="text-brand">₹ 0</span>
+                </div>
+                <button onclick="openCheckout()" class="w-full py-5 bg-brand hover:bg-brand-dark text-white rounded-2xl font-bold text-lg shadow-lg shadow-brand/20 flex items-center justify-center gap-3 transition-all">
+                    <i data-lucide="message-circle"></i> Checkout on WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-md" onclick="closeCheckout()"></div>
+        <div class="relative bg-white rounded-[2.5rem] p-10 w-full max-w-lg shadow-2xl scale-95 opacity-0 transition-all duration-300" id="checkout-panel">
+            <h3 class="font-serif text-3xl mb-8">Delivery Details</h3>
+            <div class="space-y-5">
+                <input type="text" id="cust-name" placeholder="Full Name" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand outline-none">
+                <input type="tel" id="cust-phone" placeholder="WhatsApp Number" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand outline-none">
+                <textarea id="cust-address" placeholder="Delivery Address in Bijni" rows="3" class="w-full p-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand outline-none"></textarea>
+                <button onclick="confirmOrder()" class="w-full py-5 bg-brand text-white rounded-2xl font-bold text-lg hover:bg-brand-dark">Confirm & Send WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Data & Initialization
+        const products = [
+            { id: 1, name: "Pure Cow Milk", price: 60, unit: "Litre", img: "https://images.unsplash.com/photo-1563636619-e91000935597?auto=format&fit=crop&q=80" },
+            { id: 2, name: "Organic Curd", price: 45, unit: "500g", img: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?auto=format&fit=crop&q=80" },
+            { id: 3, name: "Fresh Paneer", price: 120, unit: "250g", img: "https://images.unsplash.com/photo-1589927986089-35812388d1f4?auto=format&fit=crop&q=80" },
+            { id: 4, name: "Pure Desi Ghee", price: 450, unit: "500ml", img: "https://images.unsplash.com/photo-1563636619-e91000935597?auto=format&fit=crop&q=80" }
+        ];
+
+        let cart = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            AOS.init({ duration: 1000, once: true });
+            renderProducts();
+        });
+
+        // UI Functions
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="bg-white rounded-[2rem] p-6 border border-slate-100 hover:shadow-2xl product-card transition-all" data-aos="fade-up">
+                    <div class="rounded-2xl overflow-hidden h-48 mb-6">
+                        <img src="${p.img}" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-serif text-xl font-bold mb-1">${p.name}</h4>
+                    <p class="text-slate-400 text-sm mb-6 font-medium">₹${p.price} / ${p.unit}</p>
+                    <button onclick="addToCart(${p.id})" class="w-full py-4 bg-brand-light hover:bg-brand text-brand hover:text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all group">
+                        <i data-lucide="plus" class="w-5 h-5 transition-transform group-hover:rotate-90"></i> Add to Cart
+                    </button>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        // Cart Logic
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const panel = drawer.querySelector('.cart-drawer');
+            drawer.classList.toggle('invisible');
+            panel.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(id) {
+            const p = products.find(prod => prod.id === id);
+            const exists = cart.find(item => item.id === id);
+            if (exists) exists.qty++;
+            else cart.push({ ...p, qty: 1 });
+            updateCartUI();
+            if (cart.length === 1) toggleCart();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const total = document.getElementById('cart-total');
+            const count = document.getElementById('cart-count');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="text-center py-20 text-slate-400"><i data-lucide="shopping-cart" class="w-12 h-12 mx-auto mb-4 opacity-20"></i><p>Your basket is empty</p></div>';
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                        <img src="${item.img}" class="w-16 h-16 rounded-xl object-cover">
+                        <div class="flex-1">
+                            <h5 class="font-bold text-sm">${item.name}</h5>
+                            <p class="text-brand text-sm font-bold">₹${item.price * item.qty}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="updateQty(${item.id}, -1)" class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center hover:bg-brand hover:text-white transition-colors">-</button>
+                            <span class="font-bold w-4 text-center text-sm">${item.qty}</span>
+                            <button onclick="updateQty(${item.id}, 1)" class="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center hover:bg-brand hover:text-white transition-colors">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            const totalSum = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+            total.innerText = `₹ ${totalSum}`;
+            count.innerText = cart.reduce((acc, curr) => acc + curr.qty, 0);
+            lucide.createIcons();
+        }
+
+        function updateQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            item.qty += delta;
+            if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+            updateCartUI();
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) return alert("Basket is empty!");
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            setTimeout(() => {
+                const panel = document.getElementById('checkout-panel');
+                panel.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        }
+
+        function closeCheckout() {
+            const panel = document.getElementById('checkout-panel');
+            panel.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                document.getElementById('checkout-modal').classList.add('hidden');
+            }, 300);
+        }
+
+        function confirmOrder() {
+            const name = document.getElementById('cust-name').value;
+            const address = document.getElementById('cust-address').value;
+            if (!name || !address) return alert("Please fill details");
+
+            let msg = `*Order from Sanghamitra Dairy*%0A---------------------------%0A*Name:* ${name}%0A*Address:* ${address}%0A%0A*Items:*%0A`;
+            cart.forEach(item => {
+                msg += `• ${item.name} (${item.qty} x ${item.price}) = ₹${item.qty * item.price}%0a`;
+            });
+            const totalSum = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+            msg += `%0A*Total Amount: ₹${totalSum}*`;
+
+            window.open(`https://wa.me/919876543210?text=${msg}`);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('translate-x-full');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('h-16');
+                nav.classList.remove('h-20');
+            } else {
+                nav.classList.add('h-20');
+                nav.classList.remove('h-16');
+            }
+        });
+    </script>
+</body>
+</html>
