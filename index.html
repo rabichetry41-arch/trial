@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanghamitra - Pure Dairy from Women Farmers of Assam</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+    <style>
+    .brand-text { color: rgb(0, 173, 239); }
+    .brand-bg { background-color: rgb(0, 173, 239); }
+    .brand-border { border-color: rgba(0, 173, 239, 1); }
+    .brand-light-bg { background-color: rgba(0, 173, 239, 0.08); }
+    body { background-color: rgba(0, 173, 239, 0.07) !important; }
+    .products-section-bg { background-color: rgba(0, 173, 239, 0.05); }
+    .cart-footer-bg { background-color: rgba(0, 173, 239, 0.08); }
+
+    .navbar-bg {
+    background: rgba(124, 215, 248, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.mobile-menu-bg {
+    background-color: rgba(124, 215, 248, 0.92);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+</style>
+</head>
+<body class="text-gray-800 overflow-x-hidden">
+  <nav id="siteNavbar" class="navbar-bg shadow-md fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center gap-3">
+        <a href="#" class="nav-logo-group flex items-center shrink-0">
+            <img
+                src="https://iili.io/qDEeiFe.md.png"
+                alt="Sanghamitra Icon"
+                class="logo-mark"
+                loading="eager"
+            >
+            <img
+                src="https://iili.io/qDE443B.md.png"
+                alt="Sanghamitra"
+                class="logo-wordmark"
+                loading="eager"
+            >
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold ml-auto">
+            <a href="#about" class="nav-link">About Us</a>
+            <a href="#products" class="nav-link">Products</a>
+            <a href="#contact" class="nav-link">Need Help</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button onclick="toggleCart()" class="nav-icon-btn relative cursor-pointer flex items-center gap-2 text-xl" aria-label="Open cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count" class="absolute -top-1 -right-1 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full bg-pink-600 border-2 border-white">0</span>
+            </button>
+
+            <button onclick="toggleMobileMenu()" class="nav-icon-btn md:hidden text-2xl" aria-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden mobile-menu-bg px-6 py-5 border-t">
+        <div class="flex flex-col gap-5 text-base font-medium">
+            <a href="#about" onclick="toggleMobileMenu()" class="nav-link">About Us</a>
+            <a href="#products" onclick="toggleMobileMenu()" class="nav-link">Products</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="nav-link">Need Help</a>
+        </div>
+    </div>
+</nav>
+    <section class="hero-bg flex items-center text-white pt-24 md:pt-28 pb-12">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6 text-center">
+            <div class="hero-badge inline-block px-4 sm:px-6 py-2 rounded-full text-[11px] sm:text-xs font-medium mb-7 tracking-[0.16em]">
+                ASSAM | WOMEN POWERED | PURE DAIRY
+            </div>
+
+            <h1 class="heading-font leading-tight mb-2">
+                <span class="inline-block text-5xl sm:text-6xl md:text-8xl text-white drop-shadow-lg">Sanghamitra</span>
+            </h1>
+            <h2 class="heading-font leading-snug">
+                <span class="inline-block text-2xl sm:text-3xl md:text-5xl" style="color: rgba(0,173,239,1);">Pure Dairy from the Heart of Assam</span>
+            </h2>
+        </div>
+    </section>
+
+    <section id="products" class="py-16 md:py-24 products-section-bg">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="uppercase text-sm font-medium tracking-widest brand-text">Fresh from Our Women Farmers</span>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-3 brand-underline">Our Pure Dairy Products</h2>
+                <p class="mt-4 text-gray-600">Add product | Order on WhatsApp | Daily delivery in Bijni and nearby</p>
+            </div>
+
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            </div>
+
+            <div class="text-center mt-12 md:mt-16">
+                <p class="text-sm brand-text">100% natural | No preservatives | Women SHG produced</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 section-bg">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <div>
+                    <span class="uppercase text-sm font-medium tracking-widest brand-text">Our Story</span>
+                    <h2 class="heading-font text-3xl sm:text-4xl md:text-5xl mt-3 leading-tight">From Women SHGs to a Proud FPC</h2>
+                    <p class="mt-6 text-base sm:text-lg text-gray-700">
+                        Sanghamitra Mahila Producer Company Ltd. is a women-led Farmer Producer Company committed to pure,
+                        hygienic, and locally sourced dairy products for families across Bijni.
+                    </p>
+                </div>
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://iili.io/qWrOZjs.md.jpg" alt="Women farmers group" class="w-full aspect-[4/5] object-cover" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-20">
+        <div class="max-w-4xl mx-auto px-5 sm:px-6">
+            <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 text-center">
+                <p class="uppercase text-xs tracking-[0.2em] brand-text">Call / WhatsApp</p>
+                <h3 class="heading-font text-3xl md:text-4xl mt-2">Talk to Us on WhatsApp</h3>
+                <p class="mt-3 text-gray-600">Questions about products, delivery timing, or bulk orders.</p>
+                <button id="whatsapp-contact-btn" onclick="openWhatsAppSupport()" class="mt-6 btn-brand text-white px-8 py-4 rounded-2xl font-semibold inline-flex items-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Chat on WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black/60 z-[100] flex items-end md:items-center justify-center">
+        <div class="cart-modal bg-white w-full max-w-md md:rounded-3xl shadow-2xl overflow-hidden flex flex-col" style="max-height: 90vh;">
+            <div class="p-6 cart-header flex justify-between items-center">
+                <h3 class="text-2xl font-semibold">Your Order</h3>
+                <button onclick="toggleCart()" class="text-3xl leading-none hover:text-gray-700" aria-label="Close cart">&times;</button>
+            </div>
+            <div id="cart-items" class="flex-1 overflow-auto p-6 space-y-6"></div>
+            <div class="p-6 border-t cart-footer-bg">
+                <div class="flex justify-between text-lg font-medium mb-4">
+                    <span>Total</span>
+                    <span id="cart-total">Rs 0</span>
+                </div>
+                <button id="cart-checkout-btn" onclick="checkoutViaWhatsApp()" class="w-full btn-brand checkout-cta text-white py-4 rounded-2xl text-base sm:text-lg font-semibold flex items-center justify-center gap-3 transition">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span id="cart-checkout-label">Order on WhatsApp</span>
+                </button>
+                <p id="cart-checkout-hint" class="text-center text-xs text-gray-500 mt-3">Tap once to place your order quickly.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="hidden fixed inset-0 bg-black/60 z-[110] flex items-center justify-center px-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden animate-modal">
+            <div class="p-6 border-b flex justify-between items-center brand-light-bg">
+                <h3 class="text-xl font-bold" style="color: rgba(0, 140, 200, 1);">Add your details to place order</h3>
+                <button onclick="closeCheckoutModal()" class="text-3xl text-gray-600 hover:text-gray-800" aria-label="Close order form">&times;</button>
+            </div>
+            <form id="checkout-form" class="p-6 space-y-5">
+                <div>
+                    <label for="checkout-name" class="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
+                    <input type="text" id="checkout-name" required autocomplete="name" class="w-full px-4 py-3 border border-gray-300 rounded-xl outline-none transition">
+                    <p id="checkout-name-error" class="mt-1 text-sm text-red-600 hidden"></p>
+                </div>
+                <div>
+                    <label for="checkout-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                    <input type="tel" id="checkout-phone" required autocomplete="tel" class="w-full px-4 py-3 border border-gray-300 rounded-xl outline-none transition" placeholder="9876543210" inputmode="numeric" pattern="[0-9]*">
+                    <p id="checkout-phone-error" class="mt-1 text-sm text-red-600 hidden"></p>
+                </div>
+                <div>
+                    <label for="checkout-address" class="block text-sm font-medium text-gray-700 mb-1">Delivery Address *</label>
+                    <textarea id="checkout-address" rows="4" required autocomplete="street-address" class="w-full px-4 py-3 border border-gray-300 rounded-xl outline-none transition resize-y" placeholder="House no, Street, Area, Bijni... Pincode"></textarea>
+                    <p id="checkout-address-error" class="mt-1 text-sm text-red-600 hidden"></p>
+                </div>
+                <button type="submit" id="submit-order-btn" class="w-full btn-brand text-white py-4 rounded-2xl font-semibold text-lg flex items-center justify-center gap-3 transition">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    Order on WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="mobile-order-bar" class="mobile-order-bar hidden" aria-live="polite">
+        <button type="button" onclick="checkoutViaWhatsApp()" class="mobile-order-btn">
+            <span class="mobile-order-left">
+                <i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i>
+                <span>
+                    <span class="mobile-order-title">Order on WhatsApp</span>
+                    <span id="mobile-order-count" class="mobile-order-meta">0 items</span>
+                </span>
+            </span>
+            <span id="mobile-order-total" class="mobile-order-price">Rs 0</span>
+        </button>
+    </div>
+
+    <button id="whatsapp-float" class="wa-float" aria-label="WhatsApp support">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
